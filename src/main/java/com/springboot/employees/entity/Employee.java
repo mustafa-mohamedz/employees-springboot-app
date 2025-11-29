@@ -26,6 +26,10 @@ public class Employee {
         this.email = email;
     }
 
+    public Employee() {
+
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
