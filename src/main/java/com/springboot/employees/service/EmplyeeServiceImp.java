@@ -2,6 +2,7 @@ package com.springboot.employees.service;
 
 import com.springboot.employees.dao.EmployeeDAO;
 import com.springboot.employees.entity.Employee;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,11 @@ public class EmplyeeServiceImp implements EmployeeService {
     @Override
     public List<Employee> findAll() {
         return employeeDAO.getAllEmployees();
+    }
+
+    @Transactional
+    @Override
+    public Employee getEmployeeByID(long id) {
+        return employeeDAO.getEmployeeById(id);
     }
 }
