@@ -17,9 +17,15 @@ public class EmployeeDAOImp implements EmployeeDAO {
     public EmployeeDAOImp(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
     public List<Employee> getAllEmployees() {
         TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
         return query.getResultList();
     }
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+            return entityManager.merge(employee);
+          }
 }
