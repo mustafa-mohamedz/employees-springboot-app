@@ -1,0 +1,27 @@
+package com.springboot.employees.controller;
+
+import com.springboot.employees.entity.Employee;
+import com.springboot.employees.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/v1/api/employees")
+public class EmployeeController {
+
+    private EmployeeService employeeService;
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping
+    List<Employee> findAllEmployees(){
+        return employeeService.findAll();
+    }
+}
