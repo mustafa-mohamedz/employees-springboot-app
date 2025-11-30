@@ -1,6 +1,7 @@
 package com.springboot.employees.controller;
 
 import com.springboot.employees.entity.Employee;
+import com.springboot.employees.request.EmployeeRequest;
 import com.springboot.employees.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,5 +37,10 @@ public class EmployeeController {
     Employee addEmployee(@RequestBody Employee employee)
     {
         return employeeService.addEmployee(employee);
+    }
+
+    @PutMapping
+    public Employee updateEmployee(@PathVariable long id,  @RequestBody EmployeeRequest employeeRequest) {
+        return employeeService.updateEmployee(id, employeeRequest);
     }
 }
