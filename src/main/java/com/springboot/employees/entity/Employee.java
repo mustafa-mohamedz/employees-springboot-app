@@ -2,40 +2,40 @@ package com.springboot.employees.entity;
 
 import jakarta.persistence.*;
 
+
 @Entity
-@Table(name = "employee")
+@Table(name="employee")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private Long id;
+    @Column(name="id")
+    private long id;
 
-    @Column(name = "first_name")
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name="last_name")
     private String lastName;
-    @Column
+
+    @Column(name="email")
     private String email;
 
+    public Employee() {}
 
-    public Employee (String firstName, Long id, String lastName, String email) {
-        this.firstName = firstName;
+    public Employee(long id, String firstName, String lastName, String email) {
         this.id = id;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public Employee() {
-
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -60,5 +60,15 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
