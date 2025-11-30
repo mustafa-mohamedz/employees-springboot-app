@@ -31,4 +31,9 @@ public class EmployeeDAOImp implements EmployeeDAO {
     public Employee getEmployeeById(long id) {
         return entityManager.find(Employee.class, id);
     }
+
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        return entityManager.merge(employee);
+    }
 }

@@ -1,6 +1,7 @@
 package com.springboot.employees.controller;
 
 import com.springboot.employees.entity.Employee;
+import com.springboot.employees.request.EmployeeRequest;
 import com.springboot.employees.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,16 +25,20 @@ public class EmployeeController {
     }
 
     @GetMapping
-    List<Employee> findAllEmployees(){
+    public List<Employee> findAllEmployees(){
         return employeeService.findAll();
     }
 
     @PostMapping
-    Employee addEmployee(@RequestBody Employee employee) {
+    public Employee addEmployee(@RequestBody Employee employee) {
         return employeeService.addEmployee(employee);
     }
     @GetMapping("/{id}")
     public Employee findEmployeesByID(@PathVariable long id){
         return employeeService.getEmployeeByID(id);
+    }
+    @PutMapping("/{id}")
+    public Employee updateEmployee(@PathVariable long id, @RequestBody EmployeeRequest employeeRequest) {
+        return employeeService.updateEmployee(id,employeeRequest);
     }
 }
