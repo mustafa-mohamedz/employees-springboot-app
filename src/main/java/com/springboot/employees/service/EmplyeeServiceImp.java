@@ -27,5 +27,7 @@ public class EmplyeeServiceImp implements EmployeeService {
     @Override
     public Employee addEmployee(Employee employee) {
         return employeeDAO.addEmployee(employee);
+    public Employee getEmployeeByID(long id) {
+        return employeeDAO.getEmployeeById(id);
     }
 }
