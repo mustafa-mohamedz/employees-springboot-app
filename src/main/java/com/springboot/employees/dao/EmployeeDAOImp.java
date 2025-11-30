@@ -28,4 +28,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
     public Employee addEmployee(Employee employee) {
             return entityManager.merge(employee);
           }
+    public Employee getEmployeeById(long id) {
+        return entityManager.find(Employee.class, id);
+    }
 }
